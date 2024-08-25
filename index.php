@@ -169,53 +169,61 @@
         };
 
         function sendEmail() {
-            const selectedWeek = document.getElementById("week-dropdown").value;
-            const selectedOption = document.getElementById("week-dropdown").selectedOptions[0].text;
-            const menuContent = document.getElementById("menu-input").value;
+    const selectedWeek = document.getElementById("week-dropdown").value;
+    const selectedOption = document.getElementById("week-dropdown").selectedOptions[0].text;
+    const menuContent = document.getElementById("menu-input").value;
 
-            const element = document.getElementById('pdf-section');
+    const element = document.getElementById('pdf-section');
+    element.style.display = 'flex';
+    element.style.justifyContent = 'center';
+    element.style.alignItems = 'center';
+    element.style.padding = '20px';
 
-            element.style.display = 'flex';
-            element.style.justifyContent = 'center';
-            element.style.alignItems = 'center';
-            element.style.padding = '20px';
+    const opt = {
+        margin: 0,
+        filename: `Lounasbuffet_week_${selectedWeek}.pdf`,
+        image: { type: 'jpeg', quality: 1.0 },
+        html2canvas: { scale: 4 },
+        jsPDF: { unit: 'px', format: [element.clientWidth, element.clientHeight] }
+    };
 
-            const opt = {
-                margin: 0,
-                filename: `Lounasbuffet_week_${selectedWeek}.pdf`,
-                image: { type: 'jpeg', quality: 1.0 },
-                html2canvas: { scale: 4 },
-                jsPDF: { unit: 'px', format: [element.clientWidth, element.clientHeight] }
+    // Generate PDF and image, then send both to the server
+    html2pdf().from(element).set(opt).outputPdf('datauristring').then(function (pdfAsString) {
+        html2canvas(document.getElementById("jpg-image"), {
+            scale: 6,
+            useCORS: true,
+        }).then(function (canvas) {
+            const imageData = canvas.toDataURL("image/jpeg", 1.0);
+
+            const xhr = new XMLHttpRequest();
+            xhr.open("POST", "send_email.php", true);
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    const response = JSON.parse(xhr.responseText);
+                    if (response.status === 'exists') {
+                        if (confirm(response.message)) {
+                            updateMenu(selectedWeek, menuContent, selectedOption);
+                        }
+                    } else if (response.status === 'success') {
+                        alert(response.message);
+                    } else {
+                        alert(response.message);
+                    }
+                }
             };
 
-            html2pdf().from(element).set(opt).outputPdf('datauristring').then(function (pdfAsString) {
-                const xhr = new XMLHttpRequest();
-                xhr.open("POST", "send_email.php", true);
-                xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            xhr.send(`week=${selectedWeek}&content=${encodeURIComponent(menuContent)}&selectedOption=${encodeURIComponent(selectedOption)}&pdfData=${encodeURIComponent(pdfAsString)}&imageData=${encodeURIComponent(imageData)}`);
+        });
+    }).finally(() => {
+        element.style.display = '';
+        element.style.justifyContent = '';
+        element.style.alignItems = '';
+        element.style.padding = '';
+    });
+}
 
-                xhr.onreadystatechange = function () {
-                    if (xhr.readyState === 4 && xhr.status === 200) {
-                        const response = JSON.parse(xhr.responseText);
-                        if (response.status === 'exists') {
-                            if (confirm(response.message)) {
-                                updateMenu(selectedWeek, menuContent, selectedOption);
-                            }
-                        } else if (response.status === 'success') {
-                            alert(response.message);
-                        } else {
-                            alert(response.message);
-                        }
-                    }
-                };
-
-                xhr.send(`week=${selectedWeek}&content=${encodeURIComponent(menuContent)}&selectedOption=${encodeURIComponent(selectedOption)}&pdfData=${encodeURIComponent(pdfAsString)}`);
-            }).finally(() => {
-                element.style.display = '';
-                element.style.justifyContent = '';
-                element.style.alignItems = '';
-                element.style.padding = '';
-            });
-        }
 
         window.onload = generateWeeks;
     </script>
