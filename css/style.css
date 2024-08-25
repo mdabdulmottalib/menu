@@ -36,7 +36,7 @@ body {
   border-radius: 4px;
   width: 100%;
   box-sizing: border-box;
-  appearance: none; /* Remove default arrow for custom styling */
+  appearance: none;
 }
 
 /* Styling for the textarea */
@@ -47,7 +47,7 @@ body {
   border-radius: 4px;
   width: 100%;
   box-sizing: border-box;
-  resize: vertical; /* Allow vertical resizing */
+  resize: vertical;
 }
 
 /* Button Group */
@@ -95,7 +95,7 @@ body {
   }
 
   .btn {
-    flex: 1 1 100%; /* Stack buttons on small screens */
+    flex: 1 1 100%;
     text-align: center;
   }
 }
@@ -110,6 +110,8 @@ body {
 
 .container {
   display: flex;
+  transform: scale(0.5); /* Display as compressed in the preview */
+  transform-origin: top left;
 }
 .menu-heading {
   font-size: 48px;
@@ -166,4 +168,13 @@ body {
   font-size: 48px;
   color: #000000;
   font-weight: 900;
+}
+
+/* Lazy load images */
+.lazy {
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.lazy.loaded {
+  opacity: 1;
 }
