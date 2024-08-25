@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $weekText = "VIIKKO $week | " . trim(explode('|', $selectedOption)[1]);
 
     // Database connection
-    $conn = new mysqli('127.0.0.1', 'u584505499_trackr', 'uRDr@f#8O~', 'u584505499_expense_trackr');
+    $conn = new mysqli('127.0.0.1', 'u584505499_weekly_menu', 'B0U2c@+g6', 'u584505499_weekly_menu');
 
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
@@ -47,8 +47,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Get the PDF data from the request
     $pdfData = $_POST['pdfData'];
-
-    // Remove the "data:application/pdf;base64," prefix
     $pdfData = str_replace('data:application/pdf;base64,', '', $pdfData);
     $pdfData = base64_decode($pdfData);
 
@@ -61,19 +59,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     try {
         // SMTP configuration
         $mail->isSMTP();
-        $mail->Host       = 'smtp.hostinger.com'; // Set your SMTP server
+        $mail->Host       = 'smtp.hostinger.com';
         $mail->SMTPAuth   = true;
-        $mail->Username   = 'info@brandly.fi'; // SMTP username
-        $mail->Password   = '!Brandlyonparas2024!'; // SMTP password
+        $mail->Username   = 'info@brandly.fi';
+        $mail->Password   = '!Brandlyonparas2024!';
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-        $mail->Port       = 587; // or 465 for SSL
+        $mail->Port       = 587;
 
         // Recipients
         $mail->setFrom('info@brandly.fi', 'Brandly');
-        $mail->addAddress('info@graphicsurface.com'); // Add a recipient
+        $mail->addAddress('info@graphicsurface.com');
 
         // Attachments
-        $mail->addAttachment($pdfName); // Add the PDF attachment
+        $mail->addAttachment($pdfName);
 
         // Content
         $mail->isHTML(true);
@@ -87,10 +85,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         echo json_encode(['status' => 'error', 'message' => "Email could not be sent. Mailer Error: {$mail->ErrorInfo}"]);
     }
 
-    // Clean up by deleting the temporary PDF
     unlink($pdfName);
 
 } else {
     echo "Invalid request.";
 }
+
 ?>
