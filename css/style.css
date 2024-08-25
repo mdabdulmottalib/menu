@@ -1,0 +1,169 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Montserrat", sans-serif;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f4f4f4;
+  width: 816px;
+}
+
+.menu-form {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+/* Styling for the select dropdown */
+.styled-select {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%;
+  box-sizing: border-box;
+  appearance: none; /* Remove default arrow for custom styling */
+}
+
+/* Styling for the textarea */
+.styled-textarea {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%;
+  box-sizing: border-box;
+  resize: vertical; /* Allow vertical resizing */
+}
+
+/* Button Group */
+.button-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.btn {
+  padding: 10px 15px;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.primary-btn {
+  background-color: #007bff;
+  color: white;
+}
+
+.primary-btn:hover {
+  background-color: #0056b3;
+}
+
+.secondary-btn {
+  background-color: #6c757d;
+  color: white;
+}
+
+.secondary-btn:hover {
+  background-color: #5a6268;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .menu-form {
+    padding: 15px;
+  }
+
+  .input-group {
+    gap: 10px;
+  }
+
+  .btn {
+    flex: 1 1 100%; /* Stack buttons on small screens */
+    text-align: center;
+  }
+}
+
+.download-container {
+  background: url(../img/menu-bg.jpg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 816px;
+  margin: 0 auto;
+}
+
+.container {
+  display: flex;
+}
+.menu-heading {
+  font-size: 48px;
+  color: #f09d43;
+  font-weight: 900;
+}
+.weekly-date {
+  font-size: 24px;
+}
+.right-box {
+  padding: 15px;
+}
+.menu-left {
+  width: 356px;
+  height: 1056px;
+}
+
+.text-content div h1,
+.text-content div p {
+  font-size: 25px;
+  line-height: 1.2;
+}
+.day-name {
+  padding-bottom: 5px;
+}
+.text-content {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+.bottom-img {
+  width: 415px;
+}
+.box-container {
+  height: 1026px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.blank-space {
+  margin: 0 auto;
+  width: 816px;
+  height: 50px;
+  display: block;
+}
+/* pdf */
+.pdf-container {
+  background: #ffffff;
+  width: 816px;
+  margin: 0 auto;
+}
+
+.pdf-menu-heading {
+  font-size: 48px;
+  color: #000000;
+  font-weight: 900;
+}
