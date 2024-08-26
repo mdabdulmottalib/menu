@@ -19,9 +19,15 @@ Tervetuloa herkuttelemaan kanssamme!";
 // Handle image upload
 if (isset($_FILES['image']) && $_FILES['image']['error'] == UPLOAD_ERR_OK) {
     $image = $_FILES['image'];
-    $image_path = 'uploads/' . basename($image['name']);
+    $upload_dir = 'uploads/';
+    $image_path = $upload_dir . basename($image['name']);
 
-    // Move uploaded image to a folder
+    // Check if the uploads directory exists
+    if (!is_dir($upload_dir)) {
+        mkdir($upload_dir, 0755, true);
+    }
+
+    // Move uploaded image to the uploads folder
     if (move_uploaded_file($image['tmp_name'], $image_path)) {
         // Post to Facebook
         postToFacebook($fb_page_id, $content, $image_path, $fb_page_access_token);
@@ -31,7 +37,7 @@ if (isset($_FILES['image']) && $_FILES['image']['error'] == UPLOAD_ERR_OK) {
 
         echo "Posted successfully to Facebook and Instagram!";
     } else {
-        echo "Failed to upload image.";
+        echo "Failed to upload image. Please check directory permissions.";
     }
 } else {
     echo "No image uploaded or an error occurred.";
