@@ -13,7 +13,9 @@
           id="week-dropdown"
           onchange="updateWeeklyDate()"
           class="styled-select"
-        ></select>
+        >
+          <!-- Options go here -->
+        </select>
         <textarea
           id="menu-input"
           rows="10"
@@ -110,7 +112,7 @@
           useCORS: true,
         }).then(function (canvas) {
           var link = document.createElement("a");
-          link.download = `Lounasbuffet_week_${weekNumber}.jpg`;
+          link.download = `Lounasbuffet_${weekNumber}.jpg`;
           link.href = canvas.toDataURL("image/jpeg", 1.0);
           link.click();
         });
@@ -127,7 +129,7 @@
 
         const opt = {
           margin: 0,
-          filename: `Lounasbuffet_week_${selectedWeek}.pdf`,
+          filename: `Lounasbuffet_${selectedWeek}.pdf`,
           image: { type: "jpeg", quality: 1.0 },
           html2canvas: { scale: 4 },
           jsPDF: {
@@ -268,7 +270,7 @@
 
         const opt = {
           margin: 0,
-          filename: `Lounasbuffet_week_${selectedWeek}.pdf`,
+          filename: `Lounasbuffet_${selectedWeek}.pdf`,
           image: { type: "jpeg", quality: 1.0 },
           html2canvas: { scale: 4 },
           jsPDF: {

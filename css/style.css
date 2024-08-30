@@ -74,3 +74,81 @@ body {
   color: #000000;
   font-weight: 900;
 }
+
+/* form */
+
+.menu-form {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 24px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.input-group {
+  margin-bottom: 24px;
+}
+
+.styled-select,
+.styled-textarea {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 16px;
+  background-color: #f7f7f7;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  outline: none;
+}
+
+.styled-select:focus,
+.styled-textarea:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+.button-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.button-group .btn {
+  padding: 12px;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.button-group .primary-btn {
+  background-color: #007bff;
+  color: #ffffff;
+}
+
+.button-group .primary-btn:hover {
+  background-color: #0056b3;
+}
+
+.button-group .secondary-btn {
+  background-color: #6c757d;
+  color: #ffffff;
+}
+
+.button-group .secondary-btn:hover {
+  background-color: #5a6268;
+}
+
+@media (min-width: 600px) {
+  .button-group {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .button-group .btn {
+    width: auto;
+  }
+}
