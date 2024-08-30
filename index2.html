@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weekly Menu</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="download-container" id="jpg-image">
+      <div class="container">
+        <div class="menu-left">
+          <img
+            src="img/menu-left.jpg"
+            class="menu-left"
+            alt="Decorative Image"
+          />
+        </div>
+        <div class="right-box">
+          <div class="box-container">
+            <div>
+              <h1 class="menu-heading">LOUNASBUFFET</h1>
+              <h2 class="weekly-date">VIIKKO 34 | 19.8.- 23.8.2024</h2>
+            </div>
+            <div class="text-content">
+              <div>
+                <h1 class="day-name">MAANANTAI</h1>
+                <p>Lihapullapata (L)</p>
+                <p>Butter Chicken (L, G)</p>
+                <p>Paistetut kalapuikot (L)</p>
+              </div>
+
+              <div>
+                <h1 class="day-name">TIISTAI</h1>
+                <p>Punaviinihärkä (L,G)</p>
+                <p>Broilerin pihvi, creme fraiche (L,G)</p>
+                <p>Lohipasta (L)</p>
+              </div>
+
+              <div>
+                <h1 class="day-name">KESKIVIIKKO</h1>
+                <p>Lihapullapata (L)</p>
+                <p>Butter Chicken (L, G)</p>
+                <p>Paistetut kalapuikot (L)</p>
+              </div>
+
+              <div>
+                <h1 class="day-name">TORSTAI</h1>
+                <p>Punaviinihärkä (L,G)</p>
+                <p>Broilerin pihvi, creme fraiche (L,G)</p>
+                <p>Lohipasta (L)</p>
+              </div>
+
+              <div>
+                <h1 class="day-name">PERJANTAI</h1>
+                <p>Lihapullapata (L)</p>
+                <p>Butter Chicken (L, G)</p>
+                <p>Paistetut kalapuikot (L)</p>
+              </div>
+            </div>
+            <div class="bottom-container">
+              <img class="bottom-img" src="img/menu-bottom.png" alt="" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="blank-space">
+      <button onclick="downloadImage()" class="invoice-btns">
+        Click TO Download
+      </button>
+    </div>
+    <div class="pdf-container" id="pdf-section">
+      <div class="container">
+        <div class="menu-left">
+          <img
+            src="img/black-menu-left.png"
+            class="menu-left"
+            alt="Decorative Image"
+          />
+        </div>
+        <div class="right-box">
+          <div class="box-container">
+            <div>
+              <h1 class="pdf-menu-heading">LOUNASBUFFET</h1>
+              <h2 class="weekly-date">VIIKKO 34 | 19.8.- 23.8.2024</h2>
+            </div>
+            <div class="text-content">
+              <div>
+                <h1 class="day-name">MAANANTAI</h1>
+                <p>Lihapullapata (L)</p>
+                <p>Butter Chicken (L, G)</p>
+                <p>Paistetut kalapuikot (L)</p>
+              </div>
+
+              <div>
+                <h1 class="day-name">TIISTAI</h1>
+                <p>Punaviinihärkä (L,G)</p>
+                <p>Broilerin pihvi, creme fraiche (L,G)</p>
+                <p>Lohipasta (L)</p>
+              </div>
+
+              <div>
+                <h1 class="day-name">KESKIVIIKKO</h1>
+                <p>Lihapullapata (L)</p>
+                <p>Butter Chicken (L, G)</p>
+                <p>Paistetut kalapuikot (L)</p>
+              </div>
+
+              <div>
+                <h1 class="day-name">TORSTAI</h1>
+                <p>Punaviinihärkä (L,G)</p>
+                <p>Broilerin pihvi, creme fraiche (L,G)</p>
+                <p>Lohipasta (L)</p>
+              </div>
+
+              <div>
+                <h1 class="day-name">PERJANTAI</h1>
+                <p>Lihapullapata (L)</p>
+                <p>Butter Chicken (L, G)</p>
+                <p>Paistetut kalapuikot (L)</p>
+              </div>
+            </div>
+            <div class="bottom-container">
+              <img class="bottom-img" src="img/black-menu-bottom.png" alt="" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Include html2canvas library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script>
+      function downloadImage() {
+        html2canvas(document.getElementById("jpg-image"), {
+          scale: 6, // Increase the scale factor for even higher resolution
+          useCORS: true, // Ensure CORS is handled if needed
+        }).then(function (canvas) {
+          // Adjust the quality parameter to maximum (1.0) for the highest quality
+          var link = document.createElement("a");
+          link.download = "Weekly-menu.jpg";
+          link.href = canvas.toDataURL("image/jpeg", 1.0); // Set quality to 1.0 for the best quality
+          link.click();
+        });
+      }
+    </script>
+  </body>
+</html>

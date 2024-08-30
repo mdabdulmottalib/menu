@@ -5,101 +5,8 @@
   box-sizing: border-box;
 }
 body {
-  font-family: "Montserrat", sans-serif;
-  margin: 0 auto;
-  padding: 20px;
-  background-color: #f4f4f4;
-  width: 816px;
+  font-family: Montserrat, sans-serif;
 }
-
-.menu-form {
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-.input-group {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  margin-bottom: 20px;
-}
-
-/* Styling for the select dropdown */
-.styled-select {
-  padding: 10px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  width: 100%;
-  box-sizing: border-box;
-  appearance: none;
-}
-
-/* Styling for the textarea */
-.styled-textarea {
-  padding: 10px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  width: 100%;
-  box-sizing: border-box;
-  resize: vertical;
-}
-
-/* Button Group */
-.button-group {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-.btn {
-  padding: 10px 15px;
-  font-size: 16px;
-  cursor: pointer;
-  border: none;
-  border-radius: 4px;
-  transition: background-color 0.3s ease;
-}
-
-.primary-btn {
-  background-color: #007bff;
-  color: white;
-}
-
-.primary-btn:hover {
-  background-color: #0056b3;
-}
-
-.secondary-btn {
-  background-color: #6c757d;
-  color: white;
-}
-
-.secondary-btn:hover {
-  background-color: #5a6268;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-  .menu-form {
-    padding: 15px;
-  }
-
-  .input-group {
-    gap: 10px;
-  }
-
-  .btn {
-    flex: 1 1 100%;
-    text-align: center;
-  }
-}
-
 .download-container {
   background: url(../img/menu-bg.jpg);
   background-repeat: no-repeat;
@@ -110,8 +17,6 @@ body {
 
 .container {
   display: flex;
-  transform: scale(0.5); /* Display as compressed in the preview */
-  transform-origin: top left;
 }
 .menu-heading {
   font-size: 48px;
@@ -119,7 +24,7 @@ body {
   font-weight: 900;
 }
 .weekly-date {
-  font-size: 24px;
+  font-size: 28px;
 }
 .right-box {
   padding: 15px;
@@ -168,13 +73,4 @@ body {
   font-size: 48px;
   color: #000000;
   font-weight: 900;
-}
-
-/* Lazy load images */
-.lazy {
-  opacity: 0;
-  transition: opacity 0.3s;
-}
-.lazy.loaded {
-  opacity: 1;
 }

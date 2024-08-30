@@ -6,7 +6,7 @@ define('DB_PASS', 'your_db_pass');
 define('DB_NAME', 'your_db_name');
 
 // Base URL
-define('BASE_URL', 'http://yourdomain.com/');
+define('BASE_URL', 'http://menu.pizzaexpress.com/');
 
 // Include functions
 include_once 'functions.php';
